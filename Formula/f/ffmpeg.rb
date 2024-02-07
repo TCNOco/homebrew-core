@@ -152,11 +152,10 @@ class Ffmpeg < Formula
 
     ENV['PATH'] = "#{ENV['PATH']}:/opt/homebrew/bin"
     
+    system "open", "."
     system "./configure", *args
     system "make", "clean"
     system "make", "-j 8"
-    pwd
-    system "pwd"
     
     system "mkdir", "~/Downloads/ffmpeg"
     cp "./", "~/Downloads/ffmpeg"
