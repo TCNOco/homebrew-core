@@ -149,6 +149,9 @@ class Ffmpeg < Formula
     args += %w[--enable-videotoolbox --enable-audiotoolbox] if OS.mac?
     args << "--enable-neon" if Hardware::CPU.arm?
 
+    system "echo", "currently in"
+    system "pwd"
+    system "echo", prefix
     system "./configure", *args
     system "make", "install"
 
