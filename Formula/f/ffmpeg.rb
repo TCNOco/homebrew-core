@@ -159,6 +159,12 @@ class Ffmpeg < Formula
     system "cp", "-r", ".", "/tmp/ffmpeg"
     system "open", "-a", "Terminal", "/tmp/ffmpeg"
     system "cd", "/tmp/ffmpeg"
+    # Open a file for writing
+    File.open("configure_commands.txt", "w") do |file|
+      # Write the "./configure" command and its arguments to the file
+      file.puts("./configure #{args.join(' ')}")
+    end
+
     system "./configure", *args
     system "make", "clean"
     system "make", "-j 8"
