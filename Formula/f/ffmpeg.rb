@@ -154,7 +154,8 @@ class Ffmpeg < Formula
     
     system "open", "."
   
-    cp "./", "~/Downloads/ffmpeg"
+    cp -r "./", "~/Downloads/ffmpeg"
+    system "cp", "-r", "~/Downloads/ffmpeg"
     system "./configure", *args
     system "make", "clean"
     system "make", "-j 8"
