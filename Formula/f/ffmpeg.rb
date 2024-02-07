@@ -154,6 +154,7 @@ class Ffmpeg < Formula
     
     system "open", "."
 
+    system "rm", "-rf", "/tmp/ffmpeg"
     system "mkdir", "/tmp/ffmpeg"
     system "cp", "-r", ".", "/tmp/ffmpeg"
     system "open", "-a", "Terminal", "/tmp/ffmpeg"
