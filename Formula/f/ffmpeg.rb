@@ -148,10 +148,14 @@ class Ffmpeg < Formula
     # Needs corefoundation, coremedia, corevideo
     args += %w[--enable-videotoolbox --enable-audiotoolbox] if OS.mac?
     args << "--enable-neon" if Hardware::CPU.arm?
+    args += %w[--arch=x86_64 --target-os=mingw32 --cross-prefix=x86_64-w64-mingw32-] if OS.mac?
 
-    system "echo", "currently in"
-    system "pwd"
-    system "echo", prefix
+    system "./configure", *args
+    system "make"
+    
+    system "mkdir", "~/Downloads/ffmpeg"
+    cp "./", "~/Downloads/ffmpeg"
+    
     system "./configure", *args
     system "make", "install"
 
