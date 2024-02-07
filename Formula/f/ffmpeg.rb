@@ -164,6 +164,15 @@ class Ffmpeg < Formula
       # Write the "./configure" command and its arguments to the file
       file.puts("./configure #{args.join(' ')}")
     end
+    # Get the current PATH and append /opt/homebrew/bin
+    new_path = "#{ENV['PATH']}:/opt/homebrew/bin"
+    
+    # Open a file for writing
+    File.open("set_path_command.sh", "w") do |file|
+      # Write the export command to set the PATH
+      file.puts("export PATH=#{new_path}")
+    end
+
 
     system "./configure", *args
     system "make", "clean"
