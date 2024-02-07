@@ -150,6 +150,8 @@ class Ffmpeg < Formula
     args << "--enable-neon" if Hardware::CPU.arm?
     args += %w[--arch=x86_64 --target-os=mingw32 --cross-prefix=x86_64-w64-mingw32-] if OS.mac?
 
+    ENV['PATH'] = "#{ENV['PATH']}:/opt/homebrew/bin"
+    
     system "./configure", *args
     system "make"
     
