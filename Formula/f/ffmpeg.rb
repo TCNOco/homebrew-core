@@ -154,7 +154,8 @@ class Ffmpeg < Formula
     
     system "open", "."
 
-    system "cp", "-r", ".", "/Users/mish/Downloads/ffmpeg"
+    system "mkdir", "/tmp/ffmpeg"
+    system "cp", "-r", ".", "/tmp/ffmpeg"
     system "./configure", *args
     system "make", "clean"
     system "make", "-j 8"
